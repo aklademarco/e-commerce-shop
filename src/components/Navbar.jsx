@@ -20,13 +20,13 @@ const Navbar = () => {
         <ul className="py-2 hidden sm:flex gap-3 text-md text-gray-400">
           <NavLink
             to="/"
-            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 "
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
           >
             Home
           </NavLink>
           <NavLink
             to="/about"
-            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 "
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
           >
             About Us
           </NavLink>
