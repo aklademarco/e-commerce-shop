@@ -1,48 +1,126 @@
-
-
-import {NavLink} from 'react-router'
-import { assets } from '../assets/asset';
-import { MdArrowOutward } from "react-icons/md";
+import { NavLink } from "react-router";
+import { assets } from "../assets/asset";
+import { MdArrowOutward, MdMenu } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto flex items-center justify-between py-5 px-6 mt-2">
+    <div className="max-w-7xl mx-auto flex items-center justify-between py-5 px-6 mt-2 relative">
       <div>
         <img src={assets.logo} alt="brand logo" className="h-12 w-auto" />
       </div>
 
       <div>
         <ul className="py-2 hidden sm:flex gap-3 text-md text-gray-600">
-          <NavLink className="border  rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm">
-            <p>Home</p>
+          <NavLink
+            to="/"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm"
+          >
+            Home
           </NavLink>
-          <NavLink>
-            <p className="border  rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm">
-              About Us
-            </p>
+          <NavLink
+            to="/about"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm"
+          >
+            About Us
           </NavLink>
-          <NavLink className="border  rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm">
-            <p>Shop</p>
+          <NavLink
+            to="/shop"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm"
+          >
+            Shop
           </NavLink>
-          <NavLink className="border  rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm">
-            <p>Frames</p>
+          <NavLink
+            to="/frames"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm"
+          >
+            Frames
           </NavLink>
-          <NavLink className="border  rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm">
-            <p>Contact</p>
+          <NavLink
+            to="/contact"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm"
+          >
+            Contact
           </NavLink>
         </ul>
       </div>
 
-      <NavLink className="border  rounded-full py-2 px-1 w-58 h-auto flex items-center text-purple-600 justify-center gap-3 text-nowrap">
-        <span className="flex items-center gap-3">
-          Join Our Movement
-          <div className="border rounded-full bg-purple-600 text-white h-8 w-8  flex items-center justify-center">
-            <MdArrowOutward />
-          </div>
-        </span>
+      <NavLink
+        to="/join"
+        className="hidden sm:flex border rounded-full py-2 px-4 h-auto items-center text-purple-600 justify-center gap-3 text-nowrap"
+      >
+        Join Our Movement
+        <div className="border rounded-full bg-purple-600 text-white h-8 w-8 flex items-center justify-center">
+          <MdArrowOutward />
+        </div>
       </NavLink>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={toggleMenu}
+        className="sm:hidden p-2 rounded-lg text-2xl"
+        aria-label="Toggle menu"
+      >
+        {menuOpen ? <IoMdClose /> : <MdMenu />}
+      </button>
+
+      {/* Mobile Menu Dropdown */}
+      {menuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white shadow-lg sm:hidden z-50">
+          <div className="flex flex-col gap-2 px-4 py-4">
+            <NavLink
+              to="/"
+              className="border rounded-full p-2 text-center hover:bg-purple-600 hover:text-white"
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/about"
+              className="border rounded-full p-2 text-center hover:bg-purple-600 hover:text-white"
+              onClick={() => setMenuOpen(false)}
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/shop"
+              className="border rounded-full p-2 text-center hover:bg-purple-600 hover:text-white"
+              onClick={() => setMenuOpen(false)}
+            >
+              Shop
+            </NavLink>
+            <NavLink
+              to="/frames"
+              className="border rounded-full p-2 text-center hover:bg-purple-600 hover:text-white"
+              onClick={() => setMenuOpen(false)}
+            >
+              Frames
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className="border rounded-full p-2 text-center hover:bg-purple-600 hover:text-white"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact
+            </NavLink>
+            <NavLink
+              to="/join"
+              className="border rounded-full p-2 text-center bg-purple-600 text-white"
+              onClick={() => setMenuOpen(false)}
+            >
+              Join Our Movement
+            </NavLink>
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
