@@ -12,12 +12,12 @@ const Navbar = () => {
 
   return (
     <div className="max-w-7xl mx-auto flex items-center justify-between py-5 px-6 mt-2 relative">
-      <div>
-        <img src={assets.logo} alt="brand logo" className="h-12 w-auto" />
+      <div className="border-2 rounded-sm border-black/20">
+        <img src={assets.logo} alt="brand logo" className="h-10 w-auto" />
       </div>
 
       <div>
-        <ul className="py-2 hidden sm:flex gap-3 text-md text-gray-600">
+        <ul className="py-2 hidden sm:flex gap-3 text-md text-gray-400">
           <NavLink
             to="/"
             className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm"
