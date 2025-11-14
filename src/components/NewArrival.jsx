@@ -72,7 +72,9 @@ function NewArrival() {
 
   return (
     <section className="container mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-6">Latest Arrivals</h2>
+      <h2 className="text-3xl font-bold mb-6">
+        New Arrivals. <span className="text-black/30">Best new arrival products for you</span>
+      </h2>
       <div className="overflow-x-scroll overflow-y-hidden flex gap-8 py-4">
         {isLoading
           ? [...Array(8)].map((_, index) => <ProductCardSkeleton key={index} />)
