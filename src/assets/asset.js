@@ -30,7 +30,7 @@ export const products = [
     rating: 2,
   },
   {
-    id: "0001",
+    id: "0002",
     name: "Treasure Tee (1 Corinthians 15:33)",
     description: "",
     price: 55.9,
@@ -44,7 +44,7 @@ export const products = [
     rating: 2,
   },
   {
-    id: "0001",
+    id: "0003",
     name: "Treasure Tee (Matthew 6:21)",
     description: "",
     price: 55.9,

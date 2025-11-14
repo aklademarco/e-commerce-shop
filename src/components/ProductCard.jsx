@@ -43,7 +43,7 @@ function ProductCard({ product }) {
             <span
               id="tooltip-add"
               role="tooltip"
-              className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+              className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-purple-900"
             >
               {" "}
               Add to cart{" "}

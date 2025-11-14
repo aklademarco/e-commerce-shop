@@ -14,7 +14,7 @@ const Hero = () => {
 
         <div className="flex gap-4 md:gap-6 overflow-auto hide-scroll-bar py-4 px-10">
           <button className=" group flex items-center whitespace-nowrap bg-white/10 pl-6 pr-2 lg:pl-8 lg:pr-4 py-6 border border-white hover:bg-white gap-2 md:gap-4 lg:gap-6 cursor-pointer rounded-lg transition-colors duration-300 ">
-            <span class="text-white md:text-lg font-semibold group-hover:text-purple-900">
+            <span className="text-white md:text-lg font-semibold group-hover:text-purple-900">
               Apparel
             </span>
 
@@ -24,7 +24,7 @@ const Hero = () => {
             </div>
           </button>
           <button className=" group flex items-center whitespace-nowrap bg-white/10 pl-6 pr-2 lg:pl-8 lg:pr-4 py-6 border border-white hover:bg-white gap-2 md:gap-4 lg:gap-6 cursor-pointer rounded-lg transition-colors duration-300 ">
-            <span class="text-white md:text-lg font-semibold group-hover:text-purple-900">
+            <span className="text-white md:text-lg font-semibold group-hover:text-purple-900">
               DrinkWear
             </span>
 
@@ -34,7 +34,7 @@ const Hero = () => {
             </div>
           </button>
           <button className=" group flex items-center whitespace-nowrap bg-white/10 pl-6 pr-2 lg:pl-8 lg:pr-4 py-6 border border-white hover:bg-white gap-2 md:gap-4 lg:gap-6 cursor-pointer rounded-lg transition-colors duration-300 ">
-            <span class="text-white md:text-lg font-semibold group-hover:text-purple-900">
+            <span className="text-white md:text-lg font-semibold group-hover:text-purple-900">
               Accessories
             </span>
 
