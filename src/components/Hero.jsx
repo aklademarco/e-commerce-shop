@@ -5,7 +5,7 @@ import { MdArrowForward } from "react-icons/md";
 const Hero = () => {
   return (
     <div>
-      <img src={assets.shopHero} alt="hero bg" />
+      <img src={assets.shopHero} alt="hero bg" className='w-full h-auto object-contain' />
       <div className=" bg-[linear-gradient(73deg,rgba(159,59,211,1)_76%,rgba(159,59,211,1)_76%)] h-44 w-full">
         <h2 className=" text-2xl font-bold text-white px-12 mb-3">
           Start exploring.

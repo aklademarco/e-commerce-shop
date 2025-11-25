@@ -16,8 +16,6 @@ function NewArrival() {
         const res = await fetch(`${base}/api/v1/products/product`);
         if (!res.ok) throw new Error("Network response was not ok");
         const payload = await res.json();
-
-        // api returns { success, count, data: [...] }
         const sourceArray = Array.isArray(payload)
           ? payload
           : Array.isArray(payload?.data)
