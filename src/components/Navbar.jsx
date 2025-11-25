@@ -2,66 +2,76 @@ import { NavLink } from "react-router";
 import { assets } from "../assets/asset";
 import { MdArrowOutward, MdMenu } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAtHero, setIsAtHero] = useState(true);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtHero(window.scrollY < 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="w-full">
-      <div className=" container mx-auto flex justify-between py-8 gap-8 px-4 items-center sm:px-4 ">
-        <div>
-          <img src={assets.logo} alt="brand logo" className="h-10 w-auto" />
-        </div>
-
-        <div>
-          <ul className="py-2 hidden sm:flex gap-3 text-md text-gray-400">
-            <NavLink
-              to="/"
-              className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
-            >
-              About Us
-            </NavLink>
-            <NavLink
-              to="/shop"
-              className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
-            >
-              Shop
-            </NavLink>
-            <NavLink
-              to="/frames"
-              className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
-            >
-              Frames
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none  "
-            >
-              Contact
-            </NavLink>
-          </ul>
-        </div>
-
-        <NavLink
-          to="/join"
-          className="hidden sm:flex border rounded-full py-2 px-4 h-auto items-center text-purple-600 justify-center gap-3 text-nowrap"
-        >
-          Join Our Movement
-          <div className="border rounded-full bg-purple-600 text-white h-8 w-8 flex items-center justify-center">
-            <MdArrowOutward />
-          </div>
-        </NavLink>
+    <div className="max-w-7xl mx-auto flex items-center justify-between py-5 px-6 mt-2 relative group">
+      <div className="border-2 rounded-sm border-black/20">
+        <img src={assets.logo} alt="brand logo" className="h-10 w-auto" />
       </div>
+
+      <div>
+        <ul className="py-2 hidden sm:flex gap-3 text-md text-gray-400">
+          <NavLink
+            to="/"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
+          >
+            About Us
+          </NavLink>
+          <NavLink
+            to="/shop"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
+          >
+            Shop
+          </NavLink>
+          <NavLink
+            to="/frames"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none "
+          >
+            Frames
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="border rounded-full p-1 w-24 h-auto flex items-center hover:bg-purple-600 hover:text-white justify-center text-sm focus:text-white focus:bg-purple-600 focus:outline-none  "
+          >
+            Contact
+          </NavLink>
+        </ul>
+      </div>
+
+      <NavLink
+        to="/join"
+        className="hidden sm:flex border rounded-full py-2 px-4 h-auto items-center text-purple-600 justify-center gap-3 text-nowrap"
+      >
+        Join Our Movement
+        <div className="border rounded-full bg-purple-600 text-white h-8 w-8 flex items-center justify-center transition-transform duration-300 group-hover:rotate-[45deg]">
+          <MdArrowOutward />
+        </div>
+      </NavLink>
 
       {/* Mobile Menu Button */}
       <button
@@ -72,6 +82,7 @@ const Navbar = () => {
         {menuOpen ? <IoMdClose /> : <MdMenu />}
       </button>
 
+      {/* Mobile Menu Dropdown */}
       {menuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white shadow-lg sm:hidden z-50">
           <div className="flex flex-col gap-2 px-4 py-4">
@@ -120,6 +131,18 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      <button
+        className={`fixed bottom-8 right-8 border rounded-full px-2 py-2 flex items-center gap-2 transition-all cursor-pointer h-12 z-40 text-sm font-semibold ${
+          isAtHero
+            ? "border-purple-600 bg-white text-purple-600 hover:bg-purple-600 hover:text-white"
+            : "border-purple-600 bg-transparent text-purple-600 hover:bg-purple-600 hover:text-white"
+        }`}
+        aria-label="Shopping cart"
+      >
+        <span>GHS 0.00</span>
+        <FiShoppingCart className="text-lg" />
+      </button>
     </div>
   );
 };

@@ -32,8 +32,14 @@ function NewArrival() {
               (Array.isArray(p.image) && p.image[0]) ||
               p.imageUrl ||
               p.thumbnail ||
-              (allProducts[0] && allProducts[0].image[0]) ||
-              "",
+              (allProducts[0] && allProducts[0].image[0]) || "",
+            category:
+              typeof p.category === "string"
+                ? p.category
+                : p.category?.name ??
+                  (Array.isArray(p.categories) && p.categories[0]) ??
+                  (typeof p.categories === "string" && p.categories) ??
+                  "",
           }))
           .slice(0, 8);
 
@@ -52,6 +58,11 @@ function NewArrival() {
           name: product.name,
           price: product.price,
           imageUrl: product.image[0],
+          // ensure category remains a string from local assets
+          category:
+            typeof product.category === "string"
+              ? product.category
+              : product.category?.name ?? "",
         }));
         if (mounted) {
           setProducts(formattedProducts);
@@ -71,7 +82,8 @@ function NewArrival() {
   return (
     <section className="container mx-auto p-4">
       <h2 className="text-3xl font-bold mb-6">
-        New Arrivals. <span className="text-black/30">Best new arrival products for you</span>
+        New Arrivals.{" "}
+        <span className="text-black/30">Best new arrival products for you</span>
       </h2>
       <div className="overflow-x-scroll overflow-y-hidden flex gap-8 py-4">
         {isLoading

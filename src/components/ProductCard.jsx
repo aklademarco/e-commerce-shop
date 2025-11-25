@@ -36,14 +36,14 @@ function ProductCard({ product }) {
           <div className="relative inline-block group">
             <button
               aria-label="Add to cart"
-              className="w-9 h-9 rounded-full bg-white shadow-md flex items-center hover: cursor-pointer justify-center text-gray-700"
+              className="w-9 h-9 rounded-full bg-white shadow-md flex items-center hover: cursor-pointer justify-center text-gray-700 z-30"
             >
               <FiShoppingCart />
             </button>
             <span
               id="tooltip-add"
               role="tooltip"
-              className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-purple-900"
+              className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-purple-700"
             >
               {" "}
               Add to cart{" "}
